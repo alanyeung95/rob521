@@ -7,12 +7,11 @@ ros2 run demo_nodes_cpp listener
 rqt_graph
 ```
 
-vscode extension: ROS
-
-
 # my_robot_controller
 
 ## setup
+download vscode and use vscode extension: ROS
+
 ```
 alan@alan-VirtualBox:~/git/rob521/ros2_ws$ colcon build
 source ~/git/rob521/ros2_ws/install/setup.bash 
@@ -33,7 +32,26 @@ source ~/.bashrc
 ros2 run my_robot_controller test_node
 ```
 
-## monitor node
+## turtlesim overview
+<img src='./turtlesim-rosgraph.png' width='1000'/>
+
+## usful cmd
+### show message interface
+```
+alan@alan-VirtualBox:~/Desktop$ ros2 interface show geometry_msgs/msg/Twist
+# This expresses velocity in free space broken into its linear and angular parts.
+
+Vector3  linear
+	float64 x
+	float64 y
+	float64 z
+Vector3  angular
+	float64 x
+	float64 y
+	float64 z
+```
+
+### monitor node
 
 ```
 alan@alan-VirtualBox:~/git/ros2_ws/src/my_robot_controller$ ros2 node info /first_node
