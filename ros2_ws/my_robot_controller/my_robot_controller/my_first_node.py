@@ -7,7 +7,7 @@ class MyNode(Node):
     def __init__(self):
         super().__init__("first_node")
         self.counter=0
-        self.get_logger().info("Hello From ROS2 hot reload")
+        self.get_logger().info("Hello From ROS2 hot reload!")
         self.create_timer(1.0, self.timer_callback)
 
     def timer_callback(self):
