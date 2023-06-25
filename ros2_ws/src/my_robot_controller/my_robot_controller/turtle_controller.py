@@ -16,7 +16,7 @@ class TurtleControllerNode(Node):
 
         if pose.x > 9.0 or pose.x < 2.0 or pose.y > 9.0 or pose.y < 2.0:
             cmd.linear.x = 1.0
-            cmd.angular.z = 1.5
+            cmd.angular.z = 1.2
         else:
             cmd.linear.x = 5.0
             cmd.angular.x = 0.0

@@ -1,12 +1,3 @@
-# quick start
-
-start publisher, listener and graph
-```
-ros2 run demo_nodes_cpp talker
-ros2 run demo_nodes_cpp listener
-rqt_graph
-```
-
 # my_robot_controller
 
 ## setup
@@ -51,7 +42,19 @@ Vector3  angular
 	float64 z
 ```
 
-### monitor node
+
+# ros2 intro
+## quick start
+
+start publisher, listener and graph
+```
+ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_cpp listener
+rqt_graph
+```
+
+
+## monitor node
 
 ```
 alan@alan-VirtualBox:~/git/ros2_ws/src/my_robot_controller$ ros2 node info /first_node
@@ -73,4 +76,28 @@ alan@alan-VirtualBox:~/git/ros2_ws/src/my_robot_controller$ ros2 node info /firs
   Action Servers:
 
   Action Clients:
+```
+
+## service
+start service server
+```
+ros2 run demo_nodes_cpp add_two_ints_server 
+```
+
+send request
+```
+alan@alan-VirtualBox:~/git/rob521/ros2_ws$ ros2 service  call /add_two_ints example_interfaces/srv/AddTwoInts "{'a':2,'b':3}"
+requester: making request: example_interfaces.srv.AddTwoInts_Request(a=2, b=3)
+
+response:
+example_interfaces.srv.AddTwoInts_Response(sum=5)
+```
+
+change turtle path color to red
+```
+alan@alan-VirtualBox:~/git/rob521/ros2_ws$ ros2 service call /turtle1/set_pen turtlesim/srv/SetPen "{'r':255, 'g':0, 'b':0, 'width':6, 'off':0}"
+requester: making request: turtlesim.srv.SetPen_Request(r=255, g=0, b=0, width=6, off=0)
+
+response:
+turtlesim.srv.SetPen_Response()
 ```
