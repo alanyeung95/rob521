@@ -1,5 +1,11 @@
 # my_robot_controller
 
+## outcome preview
+create a turtle with simple path logic
+
+<img src='./diagram/turtle-path.png' width='500'/>
+
+
 ## setup
 download vscode and use vscode extension: ROS
 
@@ -11,20 +17,32 @@ alan@alan-VirtualBox:~/git/rob521/ros2_ws$ ros2 pkg create my_robot_controller -
 
 `colcon` is the build tool and `ament` is the build system
 
-## build projct
+## build/run projct
 
-node name = 'first_node'
-exe 
+install ros2 first, from this link: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
+here is my bashprofile setting
+```
+source /opt/ros/humble/setup.bash
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+source ~/git/rob521/ros2_ws/install/setup.bash 
+```
+
+run turtle stimulator on first terminal
+```
+ros2 run turtlesim turtlesim_node
+```
+
+then run controllor on second terminal
 ```
 cd ros2_ws
 colcon build # or 'colcon build --symlink-install' if want hot reload
 source ~/.bashrc
-ros2 run my_robot_controller test_node
+ros2 run my_robot_controller turtle_controller
 ```
 
 ## turtlesim overview
-<img src='./turtlesim-rosgraph.png' width='1000'/>
+<img src='./diagram/turtlesim-rosgraph.png' width='1000'/>
 
 ## usful cmd
 ### show message interface
@@ -43,7 +61,11 @@ Vector3  angular
 ```
 
 
-# ros2 intro
+# ros2 notes
+## important tips
+1. if have more dependiencies, you should also mention the dependiencies inside package.xml
+2. if colon build throw error due to path change, delete the build folder then build again
+
 ## quick start
 
 start publisher, listener and graph
@@ -54,7 +76,8 @@ rqt_graph
 ```
 
 
-## monitor node
+## usful cmd
+monitor node
 
 ```
 alan@alan-VirtualBox:~/git/ros2_ws/src/my_robot_controller$ ros2 node info /first_node
@@ -100,4 +123,19 @@ requester: making request: turtlesim.srv.SetPen_Request(r=255, g=0, b=0, width=6
 
 response:
 turtlesim.srv.SetPen_Response()
+```
+
+## check topic frequency
+```
+$ ros2 topic hz /turtle1/pose
+```
+```
+WARNING: topic [/turtle1/pose] does not appear to be published yet
+average rate: 62.413
+	min: 0.007s max: 0.026s std dev: 0.00249s window: 64
+average rate: 62.388
+	min: 0.007s max: 0.026s std dev: 0.00202s window: 127
+average rate: 62.481
+	min: 0.007s max: 0.026s std dev: 0.00211s window: 190
+
 ```
